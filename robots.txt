@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jetkiz24.kz/sitemap.xml

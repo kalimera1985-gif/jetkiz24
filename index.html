@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JETKIZ — грузовые и пассажирские перевозки, Астана и Казахстан</title>
+<meta name="description" content="JETKIZ — грузоперевозки и пассажирские перевозки в Астане и по Казахстану. Расчёт груза на сайте, заказ микроавтобусов и автобусов, трансфер. Договор, счёт с НДС 16%, ЭСФ, акт.">
+<meta name="theme-color" content="#0b1220">
+<link rel="canonical" href="https://jetkiz24.kz/">
+<meta property="og:title" content="JETKIZ — грузовые и пассажирские перевозки">
+<meta property="og:description" content="Грузоперевозки с расчётом на сайте и пассажирские перевозки по заявке. Счёт с НДС, ЭСФ, акт.">
+<meta property="og:url" content="https://jetkiz24.kz/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b1220'/><text y='71' x='50' font-size='60' text-anchor='middle' fill='%23f5a524' font-family='Arial' font-weight='bold'>J</text></svg>">
+<style>
+:root{--bg:#0b1220;--bg2:#101a2c;--card:#16233b;--line:#22304d;--ink:#eef3fb;--mut:#9fb0ca;--acc:#f5a524;--acc2:#ffc459;--ok:#2ecc71}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1140px;margin:0 auto;padding:0 18px}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:18px;height:62px}
+.logo{font-weight:800;font-size:22px}.logo span{color:var(--acc)}
+.links{display:flex;gap:20px;margin-left:auto;font-size:14.5px;color:var(--mut)}
+.links a:hover{color:var(--ink)}
+.callbtn{background:var(--acc);color:#1a1200;font-weight:700;padding:9px 15px;border-radius:10px;font-size:14.5px;white-space:nowrap}
+@media(max-width:900px){.links{display:none}.callbtn{margin-left:auto}}
+.hero{padding:44px 0 30px;background:radial-gradient(900px 400px at 88% -10%,rgba(245,165,36,.14),transparent 60%),linear-gradient(180deg,#0b1220,#0e1627)}
+.badge{display:inline-block;background:rgba(245,165,36,.12);border:1px solid rgba(245,165,36,.35);color:var(--acc2);padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:14px}
+h1{font-size:clamp(26px,4.6vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.5px}
+h1 em{font-style:normal;color:var(--acc)}
+.sub{color:var(--mut);font-size:clamp(14.5px,2vw,17.5px);margin-top:12px;max-width:620px}
+section{padding:50px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(21px,3.2vw,30px);font-weight:800;letter-spacing:-.3px}
+.lead{color:var(--mut);margin-top:9px;max-width:720px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:12px;font-weight:700;font-size:16px;border:0;cursor:pointer;transition:.15s;font-family:inherit}
+.btn-p{background:var(--acc);color:#1a1200}.btn-p:hover{background:var(--acc2)}
+.btn-s{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn-s:hover{border-color:var(--acc)}
+.btn-wa{background:#25d366;color:#04210f}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+/* калькулятор */
+.calc{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;margin-top:26px;align-items:start}
+@media(max-width:940px){.calc{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.tab{flex:1;min-width:120px;padding:11px 10px;border-radius:11px;border:1px solid var(--line);background:var(--bg);color:var(--mut);font-weight:600;font-size:14.5px;cursor:pointer;text-align:center;font-family:inherit}
+.tab.on{background:var(--acc);color:#1a1200;border-color:var(--acc)}
+.f{margin-bottom:13px;position:relative}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.row{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 13px;font-size:15.5px;font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--acc)}
+textarea{min-height:74px;resize:vertical}
+.sug{position:absolute;z-index:30;left:0;right:0;top:100%;margin-top:4px;background:var(--bg2);border:1px solid var(--acc);border-radius:10px;max-height:210px;overflow:auto;display:none}
+.sug div{padding:10px 13px;font-size:14.5px;cursor:pointer;border-bottom:1px solid var(--line)}
+.sug div:last-child{border:0}
+.sug div:hover,.sug div.sel{background:rgba(245,165,36,.18)}
+.opts{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 14px}
+.chk{display:flex;align-items:center;gap:8px;font-size:14.5px;color:var(--mut);cursor:pointer}
+.chk input{width:18px;height:18px;flex:none;accent-color:var(--acc)}
+/* итог */
+.total{position:sticky;top:78px;background:linear-gradient(160deg,#17253e,#121c30);border:1px solid var(--line);border-radius:16px;padding:20px}
+.total h3{font-size:16px;margin-bottom:14px;color:var(--acc)}
+.tl{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;padding:7px 0;color:var(--mut)}
+.tl b{color:var(--ink);font-weight:600;white-space:nowrap}
+.tl.big{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;font-size:17px;color:var(--ink)}
+.tl.big b{font-size:24px;color:var(--acc)}
+.hint{font-size:12.5px;color:var(--mut);margin-top:10px;line-height:1.45}
+.acts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.acts .btn{width:100%}
+.err{color:#ff8f8f;font-size:13.5px;margin-top:8px;display:none}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px}
+.fact b{display:block;font-size:20px;color:var(--acc)}
+.fact span{font-size:12.5px;color:var(--mut)}
+@media(max-width:760px){.facts{grid-template-columns:repeat(2,1fr)}}
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.doc{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:12px;padding:16px}
+.doc h3{font-size:15.5px;margin-bottom:5px}.doc p{color:var(--mut);font-size:14px}
+@media(max-width:860px){.docs{grid-template-columns:1fr}}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:19px 16px 16px}
+.step:before{counter-increment:s;content:counter(s);position:absolute;top:-12px;left:16px;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#1a1200;font-weight:800;display:grid;place-items:center;font-size:13.5px}
+.step h3{font-size:15.5px;margin:5px 0}.step p{color:var(--mut);font-size:13.8px}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.carrier{background:linear-gradient(135deg,rgba(245,165,36,.1),rgba(245,165,36,.02));border:1px solid rgba(245,165,36,.3);border-radius:16px;padding:24px;margin-top:24px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+@media(max-width:800px){.carrier{grid-template-columns:1fr}}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin-top:10px}
+summary{cursor:pointer;font-weight:600;font-size:15.5px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";float:right;color:var(--acc);font-size:20px;line-height:1}
+details[open] summary:after{content:"\2212"}
+details p{color:var(--mut);font-size:14.2px;margin-top:9px}
+footer{border-top:1px solid var(--line);padding:28px 0 36px;color:var(--mut);font-size:14px}
+.fgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:22px}
+@media(max-width:800px){.fgrid{grid-template-columns:1fr}}
+.wa{position:fixed;right:16px;bottom:16px;z-index:60;width:54px;height:54px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.wa svg{width:29px;height:29px;fill:#fff}
+/* разделы */
+.view{display:none}.view.on{display:block}
+[id]{scroll-margin-top:74px}
+.choice{min-height:calc(100vh - 62px);padding:56px 0 40px;background:radial-gradient(900px 420px at 85% -10%,rgba(245,165,36,.16),transparent 60%),linear-gradient(180deg,#0b1220,#0e1627)}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+@media(max-width:820px){.pick{grid-template-columns:1fr}}
+.pcard{display:flex;flex-direction:column;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 26px;transition:border-color .15s,transform .15s}
+.pcard:hover,.pcard:focus-visible{border-color:var(--acc);transform:translateY(-3px);outline:0}
+.pcard .ico{width:64px;height:64px;border-radius:16px;background:rgba(245,165,36,.12);display:grid;place-items:center}
+.pcard .ico svg{width:38px;height:38px;stroke:var(--acc);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pcard h2{font-size:clamp(22px,3vw,28px)}
+.pcard p{color:var(--mut);font-size:15px}
+.pcard ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+.pcard li{font-size:13px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.pcard .go{margin-top:auto;padding-top:8px;font-weight:700;color:var(--acc);font-size:16px}
+.mini{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:26px;color:var(--mut);font-size:14px}
+.mini b{color:var(--ink)}
+.back{display:inline-block;color:var(--mut);font-size:14px;margin-bottom:14px}
+.back:hover{color:var(--acc)}
+.links a.sw{color:var(--acc)}
+.links[hidden]{display:none}
+.okmsg{display:none;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.5);color:#8ff0b5;border-radius:11px;padding:13px;font-size:14.5px;margin-top:12px}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+ <a class="logo" href="#" aria-label="JETKIZ — на главную">JET<span>KIZ</span></a>
+ <nav class="links" id="navGruz" hidden>
+  <a href="#calc">Расчёт</a><a href="#dok">Документы</a><a href="#kak">Как работаем</a>
+  <a href="#voditelyam">Водителям</a><a href="#faq">Вопросы</a><a class="sw" href="#pass">Пассажирам →</a>
+ </nav>
+ <nav class="links" id="navPass" hidden>
+  <a href="#p-form">Заявка</a><a href="#p-uslugi">Услуги</a><a href="#p-faq">Вопросы</a><a class="sw" href="#gruz">Грузоперевозки →</a>
+ </nav>
+ <nav class="links" id="navHome">
+  <a href="#gruz">Грузоперевозки</a><a href="#pass">Пассажирские перевозки</a>
+ </nav>
+ <a class="callbtn" href="tel:+77070000000">+7 707 000 00 00</a>
+</div></header>
+
+<div class="view choice" id="homeView"><div class="wrap">
+ <div class="badge">Астана · Казахстан · Россия · Китай</div>
+ <h1>Что нужно <em>перевезти?</em></h1>
+ <p class="sub">Выберите услугу и оставьте заявку за минуту. Перезвоним в течение 30 минут с точной ценой.</p>
+ <div class="pick">
+  <a class="pcard" href="#gruz">
+   <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 6h13v10H1z"/><path d="M14 9h4.5L22 12.5V16h-8z"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg></div>
+   <h2>Грузоперевозки</h2>
+   <p>Газели, бычки, фуры, грузчики и спецтехника. Цену видно сразу на сайте, для юрлиц — счёт с НДС, ЭСФ и акт.</p>
+   <ul><li>По Астане</li><li>По Казахстану</li><li>Россия / Китай</li><li>Грузчики</li></ul>
+   <span class="go">Рассчитать перевозку →</span>
+  </a>
+  <a class="pcard" href="#pass">
+   <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2.5"/><path d="M3 10h18M8 3v7M16 3v7"/><circle cx="7.5" cy="19" r="1.8"/><circle cx="16.5" cy="19" r="1.8"/></svg></div>
+   <h2>Пассажирские перевозки</h2>
+   <p>Минивэны, микроавтобусы и автобусы: трансфер, развозка сотрудников, мероприятия и поездки в другие города.</p>
+   <ul><li>Трансфер</li><li>Развозка</li><li>Мероприятия</li><li>Межгород</li></ul>
+   <span class="go">Оставить заявку →</span>
+  </a>
+ </div>
+ <div class="mini"><span><b>30 минут</b> — ответ с ценой</span><span><b>НДС 16%</b> — счёт, ЭСФ, акт для юрлиц</span><span><b>WhatsApp</b> или звонок</span></div>
+</div></div>
+
+<div class="view" id="passView">
+<div class="hero" id="pass"><div class="wrap">
+ <a class="back" href="#">← Все услуги</a><br>
+ <div class="badge">Пассажирские перевозки</div>
+ <h1>Транспорт <em>для людей</em></h1>
+ <p class="sub">Трансфер, развозка сотрудников, автобус на мероприятие или поездка в другой город. Оставьте заявку — подберём машину и назовём цену в течение 30 минут.</p>
+
+ <div class="calc" id="p-form">
+  <div class="panel">
+   <div class="tabs" id="pTabs">
+    <button class="tab on" data-pmode="city" type="button">По Астане</button>
+    <button class="tab" data-pmode="inter" type="button">Межгород</button>
+    <button class="tab" data-pmode="transfer" type="button">Аэропорт / вокзал</button>
+   </div>
+
+   <div class="row">
+    <div class="f"><label>Откуда</label><input id="pFrom" autocomplete="off" placeholder="адрес, район, ЖК"><div class="sug" id="spFrom"></div></div>
+    <div class="f"><label>Куда</label><input id="pTo" autocomplete="off" placeholder="адрес, район, ЖК"><div class="sug" id="spTo"></div></div>
+   </div>
+
+   <div class="row">
+    <div class="f"><label>Дата</label><input id="pDate" type="date"></div>
+    <div class="f"><label>Время подачи</label><input id="pTime" type="time"></div>
+   </div>
+
+   <div class="row">
+    <div class="f"><label>Сколько пассажиров</label><input id="pPax" type="number" inputmode="numeric" min="1" max="200" placeholder="например, 12"></div>
+    <div class="f"><label>Транспорт</label><select id="pCar"></select></div>
+   </div>
+
+   <div class="f" id="pFmtRow"><label>Формат</label>
+    <select id="pFmt">
+     <option>Разовая поездка</option>
+     <option>Почасовая аренда с водителем</option>
+     <option>Ежедневная развозка сотрудников</option>
+     <option>Свадьба / мероприятие</option>
+    </select></div>
+   <div class="f" id="pFlightRow" style="display:none"><label>Номер рейса или поезда</label><input id="pFlight" placeholder="KC 851, поезд 001Т"></div>
+
+   <div class="opts">
+    <label class="chk"><input type="checkbox" id="pBack"><span>Туда и обратно</span></label>
+    <label class="chk"><input type="checkbox" id="pBag"><span>Много багажа</span></label>
+    <label class="chk"><input type="checkbox" id="pKid"><span>Детское кресло</span></label>
+    <label class="chk"><input type="checkbox" id="pSign"><span>Встреча с табличкой</span></label>
+    <label class="chk"><input type="checkbox" id="pDoc"><span>Счёт с НДС, ЭСФ, акт</span></label>
+   </div>
+
+   <div class="f"><label>Комментарий</label><textarea id="pComment" placeholder="Остановки по пути, время ожидания, маршрут развозки, пожелания к машине..."></textarea></div>
+
+   <div class="row">
+    <div class="f"><label>Ваше имя</label><input id="pName" placeholder="Как к вам обращаться"></div>
+    <div class="f"><label>Телефон</label><input id="pPhone" type="tel" placeholder="+7 7__ ___ __ __"></div>
+   </div>
+   <div class="f" id="pCompanyRow" style="display:none"><label>Компания и БИН — для счёта</label><input id="pCompany" placeholder="ТОО «Пример», БИН 000000000000"></div>
+  </div>
+
+  <div class="total">
+   <h3>Ваша заявка</h3>
+   <div class="tl"><span>Тип</span><b id="ptType">—</b></div>
+   <div class="tl"><span>Маршрут</span><b id="ptRoute">—</b></div>
+   <div class="tl"><span>Когда</span><b id="ptWhen">—</b></div>
+   <div class="tl"><span>Пассажиров</span><b id="ptPax">—</b></div>
+   <div class="tl"><span>Транспорт</span><b id="ptCar">—</b></div>
+   <div class="tl" id="ptExtraRow" style="display:none"><span>Дополнительно</span><b id="ptExtra">—</b></div>
+   <p class="hint">Цену назовём после подбора машины — обычно в течение 30 минут. Перед поездкой пришлём марку, номер машины и телефон водителя.</p>
+   <div class="acts">
+    <button class="btn btn-wa" id="pBtnWa" type="button">Отправить заявку в WhatsApp</button>
+    <a class="btn btn-s" href="tel:+77070000000">Позвонить +7 707 000 00 00</a>
+   </div>
+   <div class="err" id="pErr"></div>
+   <div class="okmsg" id="pOk">Заявка отправлена. Перезвоним в течение 30 минут.</div>
+  </div>
+ </div>
+
+ <div class="facts">
+  <div class="fact"><b>4–50</b><span>мест в одной машине</span></div>
+  <div class="fact"><b>30 мин</b><span>ответ с ценой</span></div>
+  <div class="fact"><b>НДС 16%</b><span>счёт, ЭСФ, акт</span></div>
+  <div class="fact"><b>24/7</b><span>трансферы к рейсам</span></div>
+ </div>
+</div></div>
+
+<section id="p-uslugi"><div class="wrap">
+ <h2>Кого и куда возим</h2>
+ <div class="docs">
+  <div class="doc"><h3>Трансфер</h3><p>Аэропорт, вокзалы «Нурлы Жол» и «Астана-1». Встретим с табличкой, дождёмся при задержке рейса.</p></div>
+  <div class="doc"><h3>Развозка сотрудников</h3><p>Ежедневно по графику: до офиса, завода или объекта и обратно. Договор на месяц, один счёт.</p></div>
+  <div class="doc"><h3>Мероприятия</h3><p>Корпоративы, свадьбы, конференции, выпускные. Несколько машин к одному времени.</p></div>
+  <div class="doc"><h3>Поездки по Казахстану</h3><p>Боровое, Караганда, Кокшетау, Алматы и другие города. Туда и обратно, с ожиданием.</p></div>
+  <div class="doc"><h3>Вахта и объекты</h3><p>Доставка бригад на стройку, месторождение, в промзону. Регулярно или разово.</p></div>
+  <div class="doc"><h3>Гости и делегации</h3><p>Встреча, размещение по гостиницам, поездки по городу на весь визит.</p></div>
+ </div>
+</div></section>
+
+<section id="p-faq"><div class="wrap">
+ <h2>Частые вопросы</h2>
+ <details><summary>Сколько стоит поездка?</summary><p>Зависит от машины, расстояния и времени. Оставьте заявку — назовём точную цену в течение 30 минут, без доплат после поездки.</p></details>
+ <details><summary>За сколько нужно заказывать?</summary><p>Легковую или минивэн — можно в день поездки. Микроавтобус и автобус лучше за 1–2 дня, на выходные и праздники — заранее.</p></details>
+ <details><summary>Работаете с юрлицами?</summary><p>Да. Договор, счёт от ТОО — плательщика НДС, ЭСФ и акт. Для развозки сотрудников — один счёт за месяц.</p></details>
+ <details><summary>Кто будет водителем?</summary><p>Работаем с проверенными перевозчиками. Перед поездкой пришлём марку, госномер и телефон водителя.</p></details>
+ <details><summary>Что если рейс задержали?</summary><p>Укажите номер рейса в заявке — мы отслеживаем время прилёта и подаём машину к фактическому времени.</p></details>
+</div></section>
+</div>
+
+<div class="view" id="gruzView">
+<div class="hero" id="gruz"><div class="wrap">
+ <a class="back" href="#">← Все услуги</a><br>
+ <div class="badge">Грузоперевозки · Астана · Казахстан · Россия · Китай</div>
+ <h1>Посчитайте перевозку <em>за 10 секунд</em></h1>
+ <p class="sub">Выберите маршрут и машину — увидите цену сразу, без звонков и ожидания. Работаем от ТОО: счёт с НДС, ЭСФ, акт, ЕСУТД.</p>
+
+ <div class="calc" id="calc">
+  <div class="panel">
+   <div class="tabs">
+    <button class="tab on" data-mode="city" type="button">По Астане</button>
+    <button class="tab" data-mode="inter" type="button">По Казахстану</button>
+    <button class="tab" data-mode="intl" type="button">Россия / Китай</button>
+   </div>
+
+   <div id="cityBlock">
+    <div class="row">
+     <div class="f"><label>Откуда</label><input id="cFrom" autocomplete="off" placeholder="район, ЖК, улица"><div class="sug" id="sFrom"></div></div>
+     <div class="f"><label>Куда</label><input id="cTo" autocomplete="off" placeholder="район, ЖК, улица"><div class="sug" id="sTo"></div></div>
+    </div>
+    <div class="row">
+     <div class="f"><label>Сколько часов работы</label>
+      <select id="cHours"><option value="2">2 часа (минимум)</option><option value="3">3 часа</option><option value="4">4 часа</option><option value="6">6 часов</option><option value="8">8 часов — смена</option></select></div>
+     <div class="f"><label>Машина</label><select id="cTruck"></select></div>
+    </div>
+   </div>
+
+   <div id="interBlock" style="display:none">
+    <div class="row">
+     <div class="f"><label>Откуда</label><input id="iFrom" autocomplete="off" value="Астана" placeholder="город"><div class="sug" id="siFrom"></div></div>
+     <div class="f"><label>Куда</label><input id="iTo" autocomplete="off" placeholder="город"><div class="sug" id="siTo"></div></div>
+    </div>
+    <div class="f"><label>Машина</label><select id="iTruck"></select></div>
+   </div>
+
+   <div id="intlBlock" style="display:none">
+    <div class="row">
+     <div class="f"><label>Откуда</label><input id="xFrom" autocomplete="off" placeholder="город, страна"><div class="sug" id="sxFrom"></div></div>
+     <div class="f"><label>Куда</label><input id="xTo" autocomplete="off" value="Астана" placeholder="город"><div class="sug" id="sxTo"></div></div>
+    </div>
+    <div class="f"><label>Машина</label><select id="xTruck"></select></div>
+   </div>
+
+   <div class="row">
+    <div class="f"><label>Что за груз</label><input id="cargo" placeholder="стремянки, 20 коробок"></div>
+    <div class="row" style="gap:12px">
+     <div class="f" style="margin:0"><label>Вес, кг</label><input id="weight" inputmode="numeric" placeholder="100"></div>
+     <div class="f" style="margin:0"><label>Объём, м³</label><input id="volume" inputmode="decimal" placeholder="1,1"></div>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="f"><label>Грузчики</label>
+     <select id="optLoad">
+      <option value="0">Не нужны</option>
+      <option value="1">1 грузчик</option>
+      <option value="2">2 грузчика</option>
+      <option value="3">3 грузчика</option>
+      <option value="4">4 грузчика</option>
+      <option value="6">6 грузчиков</option>
+     </select></div>
+    <div class="f"><label>Спецтехника для подъёма</label><select id="optSpec"></select></div>
+   </div>
+
+   <div class="opts">
+    <label class="chk"><input type="checkbox" id="optDoc" checked><span>Счёт с НДС, ЭСФ, акт</span></label>
+    <label class="chk"><input type="checkbox" id="optUrg"><span>Срочно, сегодня</span></label>
+   </div>
+
+   <div class="f"><label>Комментарий к заказу</label><textarea id="comment" placeholder="Хрупкий груз, погрузка с 9:00, нужен пропуск на территорию, разгрузка на втором этаже..."></textarea></div>
+
+   <div class="row">
+    <div class="f"><label>Ваше имя</label><input id="name" placeholder="Как к вам обращаться"></div>
+    <div class="f"><label>Телефон</label><input id="phone" type="tel" placeholder="+7 7__ ___ __ __"></div>
+   </div>
+   <div class="f"><label>Компания и БИН — если нужен счёт</label><input id="company" placeholder="ТОО «Пример», БИН 000000000000"></div>
+  </div>
+
+  <div class="total">
+   <h3>Предварительный расчёт</h3>
+   <div class="tl"><span>Маршрут</span><b id="tRoute">—</b></div>
+   <div class="tl"><span>Машина</span><b id="tTruck">—</b></div>
+   <div class="tl" id="tDistRow" style="display:none"><span>Расстояние</span><b id="tDist">—</b></div>
+   <div class="tl"><span>Перевозка</span><b id="tBase">—</b></div>
+   <div class="tl" id="tLoadRow" style="display:none"><span id="tLoadLbl">Грузчики</span><b id="tLoad">—</b></div>
+   <div class="tl" id="tSpecRow" style="display:none"><span id="tSpecLbl">Спецтехника</span><b id="tSpec">—</b></div>
+   <div class="tl" id="tUrgRow" style="display:none"><span>Срочность</span><b id="tUrg">—</b></div>
+   <div class="tl" id="tNdsRow"><span>НДС 16%</span><b id="tNds">—</b></div>
+   <div class="tl big"><span>Итого</span><b id="tSum">—</b></div>
+   <p class="hint" id="tHint">Цена предварительная. Точную подтвердим после уточнения габаритов и адресов — обычно в течение 30 минут.</p>
+   <div class="acts">
+    <button class="btn btn-wa" id="btnWa" type="button">Отправить заявку в WhatsApp</button>
+    <button class="btn btn-s" id="btnBill" type="button">Запросить счёт на оплату</button>
+    <a class="btn btn-s" href="tel:+77070000000">Позвонить +7 707 000 00 00</a>
+   </div>
+   <div class="err" id="errBox"></div>
+   <div class="okmsg" id="okBox">Заявка отправлена. Перезвоним в течение 30 минут.</div>
+  </div>
+ </div>
+
+ <div class="facts">
+  <div class="fact"><b>30 мин</b><span>ответ с точной ценой</span></div>
+  <div class="fact"><b>НДС 16%</b><span>счёт, ЭСФ, акт</span></div>
+  <div class="fact"><b>ЕСУТД</b><span>путевой лист и ТТН на нас</span></div>
+  <div class="fact"><b>0 ₸</b><span>подбор транспорта</span></div>
+ </div>
+</div></div>
+
+<section id="dok"><div class="wrap">
+ <h2>Почему с нами, а не с частником</h2>
+ <p class="lead">Частник дешевле на пару тысяч, но документы вы будете собирать сами. С 1 июня 2026 года путевые листы и ТТН для машин тяжелее 3,5 тонны обязательно регистрируются в ЕСУТД.</p>
+ <div class="docs">
+  <div class="doc"><h3>Договор</h3><p>Разовая заявка или рамочный договор на год. Подпишем ЭЦП, оригиналы привезём.</p></div>
+  <div class="doc"><h3>Счёт с НДС 16%</h3><p>От ТОО — плательщика НДС. Безналичный расчёт, оплата по счёту.</p></div>
+  <div class="doc"><h3>ЭСФ в срок</h3><p>Электронный счёт-фактура в сроки Налогового кодекса. НДС берёте в зачёт.</p></div>
+  <div class="doc"><h3>Акт формы Р-1</h3><p>Закрывающие документы по каждому рейсу, без напоминаний с вашей стороны.</p></div>
+  <div class="doc"><h3>ЕСУТД</h3><p>Регистрируем путевой лист и ТТН за перевозчика и даём подтверждение.</p></div>
+  <div class="doc"><h3>Ответственность</h3><p>Отвечаем перед вами мы, а не водитель, которого вы видите первый раз.</p></div>
+ </div>
+</div></section>
+
+<section id="kak"><div class="wrap">
+ <h2>Как это работает</h2>
+ <div class="steps">
+  <div class="step"><h3>Расчёт на сайте</h3><p>Выбрали маршрут и машину — увидели цену сразу.</p></div>
+  <div class="step"><h3>Подтверждение</h3><p>Перезваниваем, уточняем детали, фиксируем точную цену.</p></div>
+  <div class="step"><h3>Счёт и договор</h3><p>Для юрлиц сразу с НДС и реквизитами. Оплата безналом.</p></div>
+  <div class="step"><h3>Рейс и документы</h3><p>Везём, держим в курсе, закрываем ЭСФ и актом.</p></div>
+ </div>
+</div></section>
+
+<section id="voditelyam"><div class="wrap">
+ <h2>Водителям и перевозчикам</h2>
+ <p class="lead">Есть своя машина и работаете по Астане или республике? Добавим в базу и будем давать загрузки. Оплата по факту рейса.</p>
+ <div class="carrier">
+  <div><h3 style="font-size:17px;margin-bottom:7px">Что нужно</h3>
+   <p style="color:var(--mut);font-size:14.2px">Техпаспорт, удостоверение, желательно ИП или ТОО. Кто платит НДС — загрузки в первую очередь.</p></div>
+  <a class="btn btn-p" id="btnDriver" href="#">Добавиться в базу</a>
+ </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+ <h2>Частые вопросы</h2>
+ <details><summary>Вы сами возите или перепродаёте?</summary><p>Мы экспедитор. Своих машин нет — есть база проверенных перевозчиков. Договор вы заключаете с нами, и отвечаем за рейс тоже мы. Для вас это один телефон и один комплект документов вместо десяти водителей.</p></details>
+ <details><summary>Цена на сайте окончательная?</summary><p>Предварительная. Она честная для типовой загрузки, но на итог влияют габариты, этаж, пропускной режим и время ожидания. После заявки подтверждаем точную сумму и уже её фиксируем в счёте.</p></details>
+ <details><summary>Можно оплатить картой на сайте?</summary><p>Пока нет. Юрлица платят по счёту безналом — так проводит бухгалтерия. Для частных заказов оплата при подаче машины или переводом.</p></details>
+ <details><summary>Работаете с НДС?</summary><p>Да. Счёт от ТОО — плательщика НДС, ЭСФ в срок, акт формы Р-1. НДС берёте в зачёт.</p></details>
+ <details><summary>Сколько стоит подбор машины?</summary><p>Ничего. Комиссия уже внутри названной цены, никаких доплат после рейса.</p></details>
+ <details><summary>А если груз повредят?</summary><p>Претензию предъявляете нам, мы разбираемся с перевозчиком. По ценным грузам обсуждаем страхование до рейса.</p></details>
+ <details><summary>Что с ЕСУТД?</summary><p>С 1 июня 2026 путевые листы и ТТН для машин свыше 3,5 тонны регистрируются в ЕСУТД. Следим, чтобы перевозчик это сделал, и предоставляем подтверждение.</p></details>
+</div></section>
+</div>
+
+<footer><div class="wrap fgrid">
+ <div><div class="logo" style="margin-bottom:9px">JET<span>KIZ</span></div>
+  <p>Грузовые и пассажирские перевозки в Астане и по Казахстану. Подбор транспорта, полный пакет документов для юридических лиц.</p></div>
+ <div><p style="color:var(--ink);font-weight:600;margin-bottom:7px">Контакты</p>
+  <p><a href="tel:+77070000000">+7 707 000 00 00</a></p><p><a href="https://wa.me/77070000000" target="_blank" rel="noopener">WhatsApp</a></p><p>г. Астана</p></div>
+ <div><p style="color:var(--ink);font-weight:600;margin-bottom:7px">Реквизиты</p>
+  <p>ТОО «ALASH FAMILY»</p><p>БИН 150140010119</p><p>Плательщик НДС</p></div>
+</div><div class="wrap" style="margin-top:20px;opacity:.6">© 2026 JETKIZ</div></footer>
+
+<a class="wa" id="waFloat" href="https://wa.me/77070000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.599 5.448l-.999 3.648 3.889-1.021zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+
+<script>
+/* ==========================================================================
+   НАСТРОЙКИ JETKIZ — всё, что нужно менять, находится здесь
+   ========================================================================== */
+const CFG = {
+  phone:   "77070000000",        // WhatsApp, только цифры
+  margin:  0.15,               // ваша маржа
+  nds:     0.16,               // НДС
+  urgent:  0.20,               // надбавка за срочность
+  loaderEach: 4000,            // ОДИН грузчик за заказ (закупочная)
+  // Спецтехника — закупочные цены за подачу
+  special: {
+    "не нужна":                0,
+    "Гидроборт":            8000,
+    "Рохля / тележка":      2000,
+    "Манипулятор 3 т":     35000,
+    "Манипулятор 7 т":     50000,
+    "Автокран 16 т":       65000,
+    "Погрузчик / рампа":   25000
+  },
+
+  // ПО ГОРОДУ: подача (включает 2 часа) + каждый следующий час
+  // ВСЕ ЦИФРЫ ЗАКУПОЧНЫЕ — сколько вы платите перевозчику
+  city: {
+    "Газель до 1,5 т / 9 м³":  {base: 10000, hour: 3500},
+    "Бычок до 3 т / 16 м³":    {base: 15000, hour: 5000},
+    "Фургон 5 т / 25 м³":      {base: 20000, hour: 6500},
+    "Фургон 10 т / 40 м³":     {base: 28000, hour: 8500},
+    "Фура 20 т / 86 м³":       {base: 45000, hour: 12000}
+  },
+  // МЕЖГОРОД: за км + минимальная стоимость рейса (закупочные)
+  inter: {
+    "Газель до 1,5 т / 9 м³":  {km: 150, min: 60000},
+    "Бычок до 3 т / 16 м³":    {km: 190, min: 80000},
+    "Фургон 5 т / 25 м³":      {km: 230, min: 110000},
+    "Фургон 10 т / 40 м³":     {km: 280, min: 150000},
+    "Фура 20 т / 86 м³":       {km: 350, min: 220000}
+  },
+  // МЕЖДУНАРОД: за км (закупочные)
+  intl: {
+    "Фургон 5 т / 25 м³":      {km: 260, min: 400000},
+    "Фургон 10 т / 40 м³":     {km: 310, min: 550000},
+    "Фура 20 т / 86 м³":       {km: 380, min: 750000}
+  },
+
+  // Расстояния от Астаны, км — ПРИБЛИЗИТЕЛЬНЫЕ, уточните по факту
+  dist: {
+    "Косшы":25,"Темиртау":190,"Степногорск":200,"Караганда":215,"Щучинск":240,
+    "Боровое":250,"Кокшетау":300,"Экибастуз":320,"Павлодар":450,"Петропавловск":450,
+    "Жезказган":550,"Семей":650,"Костанай":700,"Усть-Каменогорск":900,
+    "Талдыкорган":950,"Кызылорда":1000,"Алматы":1200,"Актобе":1250,"Тараз":1250,
+    "Туркестан":1400,"Уральск":1450,"Шымкент":1480,"Атырау":1700,"Актау":2300
+  },
+  // Международные направления, км до Астаны — ПРИБЛИЗИТЕЛЬНЫЕ
+  distIntl: {
+    "Орёл (Россия)":2700,"Москва (Россия)":2700,"Екатеринбург (Россия)":1500,
+    "Новосибирск (Россия)":1100,"Омск (Россия)":800,"Челябинск (Россия)":1100,
+    "Урумчи (Китай)":1700,"Хоргос (граница КНР)":1150,"Алашанькоу (граница КНР)":1100,
+    "Бишкек (Кыргызстан)":1050,"Ташкент (Узбекистан)":1600
+  },
+  // Подсказки адресов по Астане
+  addr: ["Есильский район","Алматинский район","Сарыаркинский район","Байконурский район",
+    "район Нура","Промзона","Жаханша Досмухамедулы","Пушкина","Сейфуллина","Кенесары",
+    "Республики","Сарыарка","Туран","Мангилик Ел","Кабанбай батыра","Достык","Сыганак",
+    "Тауелсиздик","Бейбитшилик","Абая","Богенбай батыра","Рыскулбекова","Жумабаева",
+    "Шоссе Алаш","Улы Дала","Нажимеденова","Байтурсынова","Кошкарбаева","Орынбор",
+    "Е 652","Жошы хан","Акжайык","Коктал","Железнодорожный вокзал","Аэропорт",
+    "Рынок Артём","Рынок Шарын","Евразия","Астана Плаза","Хан Шатыр","Мега Силк Вей",
+    "ТЦ Сарыарка","Промышленная база","Караоткель","Тайтобе","Косшы"]
+};
+/* ====================== конец настроек ====================== */
+
+const $ = id => document.getElementById(id);
+const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₸';
+let mode = 'city';
+
+// ---- заполняем списки машин ----
+function fill(sel, obj){ sel.innerHTML=''; Object.keys(obj).forEach(k=>{
+  const o=document.createElement('option'); o.value=k; o.textContent=k; sel.appendChild(o); }); }
+fill($('cTruck'), CFG.city); fill($('iTruck'), CFG.inter); fill($('xTruck'), CFG.intl);
+fill($('optSpec'), CFG.special);
+
+// ---- автоподсказки ----
+function suggest(inp, box, list){
+  let idx=-1;
+  const close=()=>{box.style.display='none';idx=-1};
+  const render=(items)=>{
+    if(!items.length){close();return}
+    box.innerHTML=items.map(x=>'<div>'+x+'</div>').join('');
+    box.style.display='block';
+    [...box.children].forEach(d=>d.onmousedown=e=>{e.preventDefault();inp.value=d.textContent;close();calc()});
+  };
+  inp.addEventListener('input',()=>{
+    const v=inp.value.trim().toLowerCase();
+    render(!v ? list.slice(0,8) : list.filter(x=>x.toLowerCase().includes(v)).slice(0,8));
+    calc();
+  });
+  inp.addEventListener('focus',()=>render(list.slice(0,8)));
+  inp.addEventListener('blur',()=>setTimeout(close,120));
+  inp.addEventListener('keydown',e=>{
+    const items=[...box.children]; if(!items.length)return;
+    if(e.key==='ArrowDown'){e.preventDefault();idx=(idx+1)%items.length}
+    else if(e.key==='ArrowUp'){e.preventDefault();idx=(idx-1+items.length)%items.length}
+    else if(e.key==='Enter'&&idx>=0){e.preventDefault();inp.value=items[idx].textContent;close();calc();return}
+    else return;
+    items.forEach(x=>x.classList.remove('sel')); items[idx].classList.add('sel');
+    items[idx].scrollIntoView({block:'nearest'});
+  });
+}
+const cities = Object.keys(CFG.dist).concat(['Астана']).sort();
+suggest($('cFrom'),$('sFrom'),CFG.addr); suggest($('cTo'),$('sTo'),CFG.addr);
+suggest($('iFrom'),$('siFrom'),cities);  suggest($('iTo'),$('siTo'),cities);
+suggest($('xFrom'),$('sxFrom'),Object.keys(CFG.distIntl)); suggest($('xTo'),$('sxTo'),cities);
+
+// ---- переключение режимов ----
+document.querySelectorAll('#calc .tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('#calc .tab').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on'); mode=t.dataset.mode;
+  $('cityBlock').style.display  = mode==='city'  ? '' : 'none';
+  $('interBlock').style.display = mode==='inter' ? '' : 'none';
+  $('intlBlock').style.display  = mode==='intl'  ? '' : 'none';
+  calc();
+});
+
+// ---- расчёт ----
+let last = {};
+function calc(){
+  let buy=0, route='—', truck='—', dist=0;
+  if(mode==='city'){
+    truck=$('cTruck').value; const t=CFG.city[truck];
+    const h=+$('cHours').value;
+    buy = t.base + Math.max(0,h-2)*t.hour;
+    const a=$('cFrom').value.trim(), b=$('cTo').value.trim();
+    route = (a||'Астана')+' → '+(b||'Астана');
+  } else if(mode==='inter'){
+    truck=$('iTruck').value; const t=CFG.inter[truck];
+    const a=$('iFrom').value.trim()||'Астана', b=$('iTo').value.trim();
+    const d = CFG.dist[b] || CFG.dist[a] || 0;
+    dist=d; buy = d ? Math.max(t.min, d*t.km) : 0;
+    route = a+' → '+(b||'—');
+  } else {
+    truck=$('xTruck').value; const t=CFG.intl[truck];
+    const a=$('xFrom').value.trim(), b=$('xTo').value.trim()||'Астана';
+    const d = CFG.distIntl[a] || 0;
+    dist=d; buy = d ? Math.max(t.min, d*t.km) : 0;
+    route = (a||'—')+' → '+b;
+  }
+  const nLoad = +$('optLoad').value || 0;
+  const load  = nLoad * CFG.loaderEach;
+  const specName = $('optSpec').value;
+  const spec = CFG.special[specName] || 0;
+  let sum = buy + load + spec;
+  const urg = $('optUrg').checked ? sum*CFG.urgent : 0;
+  sum += urg;
+  const withMargin = sum * (1 + CFG.margin);
+  const nds = $('optDoc').checked ? withMargin*CFG.nds : 0;
+  const total = withMargin + nds;
+
+  $('tRoute').textContent = route;
+  $('tTruck').textContent = truck.split(' / ')[0];
+  $('tDistRow').style.display = dist ? 'flex' : 'none';
+  $('tDist').textContent = dist ? dist.toLocaleString('ru-RU')+' км' : '—';
+  const ok = buy>0;
+  $('tBase').textContent = ok ? fmt(buy*(1+CFG.margin)) : '—';
+  $('tLoadRow').style.display = load ? 'flex' : 'none';
+  $('tLoadLbl').textContent = 'Грузчики, ' + nLoad + ' чел.';
+  $('tLoad').textContent = fmt(load*(1+CFG.margin));
+  $('tSpecRow').style.display = spec ? 'flex' : 'none';
+  $('tSpecLbl').textContent = specName;
+  $('tSpec').textContent = fmt(spec*(1+CFG.margin));
+  $('tUrgRow').style.display = urg ? 'flex' : 'none';
+  $('tUrg').textContent = fmt(urg*(1+CFG.margin));
+  $('tNdsRow').style.display = $('optDoc').checked ? 'flex' : 'none';
+  $('tNds').textContent = ok ? fmt(nds) : '—';
+  $('tSum').textContent = ok ? fmt(total) : 'выберите маршрут';
+  $('tHint').textContent = ok
+    ? 'Цена предварительная. Точную подтвердим после уточнения габаритов и адресов — обычно в течение 30 минут.'
+    : (mode==='city' ? 'Укажите адреса и число часов.' : 'Выберите город из списка — расстояние подставится само.');
+
+  last = {route, truck, dist, total, nds, withMargin, ok, nLoad, specName, spec};
+}
+['cHours','cTruck','iTruck','xTruck','optLoad','optSpec','optDoc','optUrg','cargo','weight','volume']
+  .forEach(id=>{ const e=$(id); if(e){ e.addEventListener('input',calc); e.addEventListener('change',calc);} });
+calc();
+
+// ---- отправка ----
+function compose(kind){
+  const L=[];
+  L.push(kind==='bill' ? 'ЗАПРОС СЧЁТА — JETKIZ' : 'ЗАЯВКА С САЙТА JETKIZ');
+  L.push('Маршрут: '+last.route);
+  L.push('Машина: '+last.truck);
+  if(last.dist) L.push('Расстояние: '+last.dist+' км');
+  if(mode==='city') L.push('Часов работы: '+$('cHours').value);
+  if($('cargo').value.trim()) L.push('Груз: '+$('cargo').value.trim());
+  if($('weight').value.trim()) L.push('Вес: '+$('weight').value.trim()+' кг');
+  if($('volume').value.trim()) L.push('Объём: '+$('volume').value.trim()+' м³');
+  L.push('Грузчики: '+(last.nLoad ? last.nLoad+' чел.' : 'не нужны'));
+  if(last.spec) L.push('Спецтехника: '+last.specName);
+  L.push('Срочно: '+($('optUrg').checked?'да':'нет'));
+  L.push('Документы с НДС: '+($('optDoc').checked?'да':'нет'));
+  L.push('—');
+  L.push('РАСЧЁТ С САЙТА: '+fmt(last.total)+($('optDoc').checked?' (в т.ч. НДС '+fmt(last.nds)+')':' без НДС'));
+  L.push('—');
+  if($('name').value.trim())    L.push('Имя: '+$('name').value.trim());
+  if($('phone').value.trim())   L.push('Телефон: '+$('phone').value.trim());
+  if($('company').value.trim()) L.push('Компания: '+$('company').value.trim());
+  if($('comment').value.trim()) L.push('Комментарий: '+$('comment').value.trim());
+  return L.join('\n');
+}
+function send(kind){
+  const e=$('errBox'); e.style.display='none';
+  if(!last.ok){ e.textContent='Сначала заполните маршрут — цена пока не посчитана.'; e.style.display='block'; return; }
+  if(kind==='bill' && !$('company').value.trim()){
+    e.textContent='Для счёта укажите компанию и БИН.'; e.style.display='block'; $('company').focus(); return;
+  }
+  if(!$('phone').value.trim()){
+    e.textContent='Оставьте телефон — иначе мы не сможем перезвонить.'; e.style.display='block'; $('phone').focus(); return;
+  }
+  window.open('https://wa.me/'+CFG.phone+'?text='+encodeURIComponent(compose(kind)),'_blank');
+  $('okBox').style.display='block';
+}
+$('btnWa').onclick   = ()=>send('order');
+$('btnBill').onclick = ()=>send('bill');
+$('btnDriver').href  = 'https://wa.me/'+CFG.phone+'?text='+encodeURIComponent('Хочу в базу перевозчиков JETKIZ. Моя машина: ');
+$('waFloat').href    = 'https://wa.me/'+CFG.phone;
+
+/* ==========================================================================
+   ПАССАЖИРСКИЕ ПЕРЕВОЗКИ — список машин и подсказки
+   ========================================================================== */
+const PCFG = {
+  cars: [                         // название и сколько мест
+    {name:"Легковой автомобиль",        seats:3},
+    {name:"Минивэн",                    seats:7},
+    {name:"Микроавтобус",               seats:18},
+    {name:"Автобус средний",            seats:30},
+    {name:"Автобус большой",            seats:50}
+  ],
+  transfer: ["Аэропорт Нурсултан Назарбаев","Вокзал «Нурлы Жол»","Вокзал «Астана-1»","Автовокзал «Сапаржай»"]
+};
+let pmode='city';
+const pList=[];                   // меняется по режиму, подсказки берут его
+function setPList(){
+  pList.length=0;
+  const src = pmode==='city' ? CFG.addr : pmode==='inter' ? cities : PCFG.transfer.concat(CFG.addr);
+  src.forEach(x=>pList.push(x));
+}
+setPList();
+PCFG.cars.forEach(c=>{const o=document.createElement('option');o.value=c.name;o.textContent=c.name+' — до '+c.seats+' мест';$('pCar').appendChild(o)});
+let carTouched=false;
+$('pCar').addEventListener('change',()=>{carTouched=true});
+$('pPax').addEventListener('input',()=>{
+  const n=+$('pPax').value||0; if(!n||carTouched) return;
+  const c=PCFG.cars.find(c=>c.seats>=n)||PCFG.cars[PCFG.cars.length-1];
+  $('pCar').value=c.name;
+});
+suggest($('pFrom'),$('spFrom'),pList); suggest($('pTo'),$('spTo'),pList);
+(function(){const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());$('pDate').min=d.toISOString().slice(0,10)})();
+
+const PNAMES={city:'По Астане',inter:'Межгород',transfer:'Трансфер'};
+document.querySelectorAll('#pTabs .tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('#pTabs .tab').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on'); pmode=t.dataset.pmode; setPList();
+  $('pFmtRow').style.display    = pmode==='city' ? '' : 'none';
+  $('pFlightRow').style.display = pmode==='transfer' ? '' : 'none';
+  const ph = pmode==='inter' ? 'город' : pmode==='transfer' ? 'аэропорт, вокзал или адрес' : 'адрес, район, ЖК';
+  $('pFrom').placeholder=ph; $('pTo').placeholder=ph;
+  if(pmode==='inter' && !$('pFrom').value.trim()) $('pFrom').value='Астана';
+  pcalc();
+});
+function pextras(){
+  const e=[];
+  if($('pBack').checked) e.push('туда и обратно');
+  if($('pBag').checked)  e.push('много багажа');
+  if($('pKid').checked)  e.push('детское кресло');
+  if($('pSign').checked) e.push('встреча с табличкой');
+  if($('pDoc').checked)  e.push('счёт с НДС');
+  return e;
+}
+function pwhen(){
+  const d=$('pDate').value, t=$('pTime').value;
+  if(!d&&!t) return '';
+  const ds = d ? d.split('-').reverse().join('.') : '';
+  return (ds+' '+t).trim();
+}
+function pcalc(){
+  const a=$('pFrom').value.trim(), b=$('pTo').value.trim();
+  $('ptType').textContent = PNAMES[pmode] + (pmode==='city' ? ' · '+$('pFmt').value.toLowerCase() : '');
+  $('ptRoute').textContent = (a||b) ? (a||'—')+' → '+(b||'—') : '—';
+  $('ptWhen').textContent = pwhen()||'—';
+  $('ptPax').textContent = $('pPax').value ? $('pPax').value+' чел.' : '—';
+  $('ptCar').textContent = $('pCar').value;
+  const e=pextras();
+  $('ptExtraRow').style.display = e.length ? 'flex' : 'none';
+  $('ptExtra').textContent = e.join(', ');
+  $('pCompanyRow').style.display = $('pDoc').checked ? '' : 'none';
+}
+['pFrom','pTo','pDate','pTime','pPax','pCar','pFmt','pBack','pBag','pKid','pSign','pDoc','pFlight']
+  .forEach(id=>{const e=$(id); e.addEventListener('input',pcalc); e.addEventListener('change',pcalc);});
+pcalc();
+
+function pcompose(){
+  const L=['ЗАЯВКА С САЙТА JETKIZ — ПАССАЖИРСКИЕ ПЕРЕВОЗКИ'];
+  L.push('Тип: '+PNAMES[pmode]);
+  if(pmode==='city') L.push('Формат: '+$('pFmt').value);
+  L.push('Откуда: '+$('pFrom').value.trim());
+  L.push('Куда: '+$('pTo').value.trim());
+  if(pwhen()) L.push('Когда: '+pwhen());
+  if(pmode==='transfer' && $('pFlight').value.trim()) L.push('Рейс / поезд: '+$('pFlight').value.trim());
+  L.push('Пассажиров: '+($('pPax').value||'не указано'));
+  L.push('Транспорт: '+$('pCar').value);
+  const e=pextras(); if(e.length) L.push('Дополнительно: '+e.join(', '));
+  L.push('—');
+  if($('pName').value.trim())    L.push('Имя: '+$('pName').value.trim());
+  L.push('Телефон: '+$('pPhone').value.trim());
+  if($('pDoc').checked && $('pCompany').value.trim()) L.push('Компания: '+$('pCompany').value.trim());
+  if($('pComment').value.trim()) L.push('Комментарий: '+$('pComment').value.trim());
+  return L.join('\n');
+}
+$('pBtnWa').onclick=()=>{
+  const er=$('pErr'); er.style.display='none';
+  const fail=(msg,id)=>{er.textContent=msg;er.style.display='block';if(id)$(id).focus()};
+  if(!$('pFrom').value.trim()||!$('pTo').value.trim()) return fail('Укажите, откуда и куда ехать.', !$('pFrom').value.trim()?'pFrom':'pTo');
+  if(!$('pDate').value) return fail('Укажите дату поездки.','pDate');
+  if(!$('pPhone').value.trim()) return fail('Оставьте телефон — иначе мы не сможем перезвонить.','pPhone');
+  if($('pDoc').checked && !$('pCompany').value.trim()) return fail('Для счёта укажите компанию и БИН.','pCompany');
+  window.open('https://wa.me/'+CFG.phone+'?text='+encodeURIComponent(pcompose()),'_blank');
+  $('pOk').style.display='block';
+};
+
+/* ==========================================================================
+   РАЗДЕЛЫ: главная (выбор) / грузоперевозки / пассажирские
+   ========================================================================== */
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  const v = !h ? 'home' : (h==='pass'||h.startsWith('p-')) ? 'pass' : 'gruz';
+  $('homeView').classList.toggle('on', v==='home');
+  $('gruzView').classList.toggle('on', v==='gruz');
+  $('passView').classList.toggle('on', v==='pass');
+  $('navHome').hidden = v!=='home';
+  $('navGruz').hidden = v!=='gruz';
+  $('navPass').hidden = v!=='pass';
+  document.title = v==='pass' ? 'Пассажирские перевозки — JETKIZ, Астана'
+                 : v==='gruz' ? 'Грузоперевозки — JETKIZ, Астана | расчёт за 10 секунд'
+                 : 'JETKIZ — грузовые и пассажирские перевозки, Астана и Казахстан';
+  const el = h && document.getElementById(h);
+  if(!h || h==='gruz' || h==='pass' || !el) window.scrollTo(0,0); else el.scrollIntoView();
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
