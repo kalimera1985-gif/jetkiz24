@@ -400,10 +400,11 @@ footer .h{color:var(--ink);font-weight:700;margin-bottom:6px}
 const CFG = {
   phone:     "77070000000",        // WhatsApp и звонки: только цифры, без +
   phoneShow: "+7 707 000 00 00",   // как номер показывается на сайте
-  orderFee: 2000, // наша минимальная маржа с каждого заказа, ₸ (на сайте вместо 15%)
+  orderFee: 2000, // фиксированная часть маржи с каждого заказа, ₸
+  margin: 0.15,   // процентная часть маржи от закупа
   nds:    0.16,   // НДС
   // ПО ГОРОДУ: ЗАКУПОЧНАЯ цена перевозчика, ₸ за час. null = «по договорённости»
-  // Клиенту сайт покажет: (закуп × часы + orderFee) × (1 + НДС), округлено вверх до 10 ₸
+  // Клиенту сайт покажет: (закуп × часы × (1 + margin) + orderFee) × (1 + НДС), округлено вверх до 10 ₸
   city: {
     "Газель до 1,5 т / 9 м³":  7000,
     "Бычок до 3 т / 16 м³":    null,
@@ -453,7 +454,7 @@ const PCFG = {
 
 const $ = id => document.getElementById(id);
 const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₸';
-const clientPrice = (buy,h) => Math.ceil((buy*h + CFG.orderFee)*(1+CFG.nds)/10)*10;
+const clientPrice = (buy,h) => Math.ceil((buy*h*(1+CFG.margin) + CFG.orderFee)*(1+CFG.nds)/10)*10;
 const WA = t => 'https://wa.me/'+CFG.phone+(t?'?text='+encodeURIComponent(t):'');
 
 // ---- контакты по всему сайту ----
