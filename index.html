@@ -463,6 +463,11 @@ const WA_TEXT = {
   voice: 'Здравствуйте! Оставлю заявку голосовым 🎤'
 };
 document.querySelectorAll('[data-wa]').forEach(a=>a.href=WA(WA_TEXT[a.dataset.wa]));
+// В разделах с формой любая кнопка WhatsApp отправляет всё, что клиент заполнил
+document.querySelectorAll('[data-wa]').forEach(a=>a.addEventListener('click',()=>{
+  const v=$('gruzView').classList.contains('on')?'gruz':$('passView').classList.contains('on')?'pass':'home';
+  a.href = v==='gruz' ? WA(compose()) : v==='pass' ? WA(pcompose()) : WA(WA_TEXT[a.dataset.wa]);
+}));
 document.querySelectorAll('[data-tel]').forEach(a=>a.href='tel:+'+CFG.phone);
 document.querySelectorAll('[data-telshow]').forEach(e=>e.textContent=CFG.phoneShow);
 document.querySelectorAll('.pr-gazel').forEach(e=>e.textContent=fmt(clientPrice(CFG.city[Object.keys(CFG.city)[0]],1)));
@@ -553,32 +558,32 @@ function calc(){
 calc();
 
 function compose(){
-  const L=['ЗАЯВКА С САЙТА JETKIZ — ГРУЗ'];
-  L.push('Маршрут: '+last.route);
-  L.push('Машина: '+last.truck);
-  if(mode==='city') L.push('Часов работы: '+$('cHours').value);
+  calc();
   const v=id=>$(id).value.trim();
+  const L=['ЗАЯВКА С САЙТА JETKIZ — ГРУЗ'];
+  L.push('Направление: '+({city:'По Астане',inter:'По Казахстану',intl:'Россия / Китай'})[mode]);
+  const from = mode==='city'?v('cFrom'):mode==='inter'?v('iFrom'):v('xFrom');
+  const to   = mode==='city'?v('cTo')  :mode==='inter'?v('iTo')  :v('xTo');
+  L.push('Откуда: '+(from||'не указано'));
+  L.push('Куда: '+(to||'не указано'));
+  L.push('Машина: '+last.truck.replace(' / ',', '));
+  if(mode==='city') L.push('Часов работы: '+$('cHours').value);
   if(v('cargo'))  L.push('Груз: '+v('cargo'));
   if(v('weight')) L.push('Вес: '+v('weight')+' кг');
   if(v('volume')) L.push('Объём: '+v('volume')+' м³');
-  if(last.nLoad)  L.push('Грузчики: '+last.nLoad+' чел.');
-  if(last.specName && last.specName!=='не нужна') L.push('Спецтехника: '+last.specName);
-  if($('optUrg').checked) L.push('Срочно: да');
-  L.push('Счёт с НДС: '+(last.doc?'да':'нет'));
+  L.push('Грузчики: '+(last.nLoad ? last.nLoad+' чел.' : 'не нужны'));
+  L.push('Спецтехника: '+last.specName);
+  L.push('Срочно: '+($('optUrg').checked?'да':'нет'));
+  L.push('Счёт с НДС, ЭСФ, акт: '+(last.doc?'да':'нет'));
+  if(v('company')) L.push('Компания: '+v('company'));
   L.push('Ориентир с сайта: '+(last.total ? 'от '+fmt(last.total)+' с НДС' : 'по договорённости'));
-  L.push('—');
+  if(v('name') || v('phone') || v('comment')) L.push('—');
   if(v('name'))    L.push('Имя: '+v('name'));
-  L.push('Телефон: '+v('phone'));
-  if(last.doc && v('company')) L.push('Компания: '+v('company'));
+  if(v('phone'))   L.push('Телефон: '+v('phone'));
   if(v('comment')) L.push('Комментарий: '+v('comment'));
   return L.join('\n');
 }
 $('btnWa').onclick=()=>{
-  const e=$('errBox'); e.style.display='none';
-  const fail=(m,id)=>{e.textContent=m;e.style.display='block';$(id).focus()};
-  if(mode==='inter' && !$('iTo').value.trim()) return fail('Укажите, куда везти.','iTo');
-  if(mode==='intl'  && !$('xFrom').value.trim()) return fail('Укажите, откуда везти.','xFrom');
-  if(!$('phone').value.trim()) return fail('Оставьте телефон — перезвоним или напишем в WhatsApp.','phone');
   window.open(WA(compose()),'_blank');
   $('okBox').style.display='block';
 };
@@ -636,30 +641,27 @@ function pcalc(){
 pcalc();
 
 function pcompose(){
+  pcalc();
   const v=id=>$(id).value.trim();
   const L=['ЗАЯВКА С САЙТА JETKIZ — ПАССАЖИРЫ'];
-  L.push('Тип: '+PNAMES[pmode]+(pmode==='city'?' · '+$('pFmt').value:''));
-  L.push('Откуда: '+v('pFrom'));
-  L.push('Куда: '+v('pTo'));
-  if(pwhen()) L.push('Когда: '+pwhen());
-  if(pmode==='transfer' && v('pFlight')) L.push('Рейс / поезд: '+v('pFlight'));
+  L.push('Тип: '+PNAMES[pmode]);
+  if(pmode==='city') L.push('Формат: '+$('pFmt').value);
+  L.push('Откуда: '+(v('pFrom')||'не указано'));
+  L.push('Куда: '+(v('pTo')||'не указано'));
+  L.push('Когда: '+(pwhen()||'не указано'));
+  if(pmode==='transfer') L.push('Рейс / поезд: '+(v('pFlight')||'не указано'));
   L.push('Пассажиров: '+(v('pPax')||'не указано'));
   L.push('Транспорт: '+$('pCar').value);
-  const e=pextras(); if(e.length) L.push('Дополнительно: '+e.join(', '));
-  L.push('Счёт с НДС: '+($('pDoc').checked?'да':'нет'));
-  L.push('—');
+  const e=pextras(); L.push('Дополнительно: '+(e.length?e.join(', '):'нет'));
+  L.push('Счёт с НДС, ЭСФ, акт: '+($('pDoc').checked?'да':'нет'));
+  if(v('pCompany')) L.push('Компания: '+v('pCompany'));
+  if(v('pName') || v('pPhone') || v('pComment')) L.push('—');
   if(v('pName'))    L.push('Имя: '+v('pName'));
-  L.push('Телефон: '+v('pPhone'));
-  if($('pDoc').checked && v('pCompany')) L.push('Компания: '+v('pCompany'));
+  if(v('pPhone'))   L.push('Телефон: '+v('pPhone'));
   if(v('pComment')) L.push('Комментарий: '+v('pComment'));
   return L.join('\n');
 }
 $('pBtnWa').onclick=()=>{
-  const er=$('pErr'); er.style.display='none';
-  const fail=(m,id)=>{er.textContent=m;er.style.display='block';$(id).focus()};
-  if(!$('pFrom').value.trim()) return fail('Укажите, откуда ехать.','pFrom');
-  if(!$('pTo').value.trim())   return fail('Укажите, куда ехать.','pTo');
-  if(!$('pPhone').value.trim()) return fail('Оставьте телефон — перезвоним или напишем в WhatsApp.','pPhone');
   window.open(WA(pcompose()),'_blank');
   $('pOk').style.display='block';
 };
