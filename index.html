@@ -167,7 +167,7 @@ footer .h{color:var(--ink);font-weight:700;margin-bottom:6px}
  <div class="pick">
   <a class="pcard" href="#gruz">
    <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 6h13v10H1z"/><path d="M14 9h4.5L22 12.5V16h-8z"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg></div>
-   <div><h2>Грузоперевозки</h2><p>Газели, фуры, грузчики. Цена сразу.</p></div>
+   <div><h2>Грузоперевозки</h2><p>Газель по городу от 7 000 ₸/час</p></div>
    <span class="arr">›</span>
   </a>
   <a class="pcard" href="#pass">
@@ -198,7 +198,7 @@ footer .h{color:var(--ink);font-weight:700;margin-bottom:6px}
 <div class="wrap top" id="gruz">
  <a class="back" href="#">← Все услуги</a>
  <h1>Грузо<wbr>перевозки</h1>
- <p class="sub">Цена считается сразу. Точную подтвердим в WhatsApp за 10 минут.</p>
+ <p class="sub">Газель по городу — от 7 000 ₸/час. Межгород и крупные машины — по договорённости, ответим за 10 минут.</p>
 
  <div class="calc" id="calc">
   <div class="panel">
@@ -216,7 +216,7 @@ footer .h{color:var(--ink);font-weight:700;margin-bottom:6px}
     <div class="row" style="grid-template-columns:2fr 1fr">
      <div class="f"><label>Машина</label><select id="cTruck"></select></div>
      <div class="f"><label>Часов</label>
-      <select id="cHours"><option value="2">2 ч</option><option value="3">3 ч</option><option value="4">4 ч</option><option value="6">6 ч</option><option value="8">8 ч</option></select></div>
+      <select id="cHours"><option value="1">1 ч</option><option value="2" selected>2 ч</option><option value="3">3 ч</option><option value="4">4 ч</option><option value="6">6 ч</option><option value="8">8 ч</option></select></div>
     </div>
    </div>
 
@@ -262,11 +262,8 @@ footer .h{color:var(--ink);font-weight:700;margin-bottom:6px}
   <div class="total">
    <div class="tl"><span>Маршрут</span><b id="tRoute">—</b></div>
    <div class="tl"><span>Машина</span><b id="tTruck">—</b></div>
-   <div class="tl" id="tDistRow" hidden><span>Расстояние</span><b id="tDist">—</b></div>
-   <div class="tl"><span>Перевозка</span><b id="tBase">—</b></div>
-   <div class="tl" id="tExtraRow" hidden><span id="tExtraLbl">Доп. услуги</span><b id="tExtra">—</b></div>
-   <div class="tl" id="tNdsRow"><span>НДС 16%</span><b id="tNds">—</b></div>
-   <div class="tl big"><span>Итого</span><b id="tSum">—</b></div>
+   <div class="tl" id="tRateRow"><span>Ставка</span><b id="tRate">—</b></div>
+   <div class="tl big"><span>Стоимость</span><b id="tSum">—</b></div>
    <p class="hint" id="tHint"></p>
    <div class="acts">
     <button class="btn btn-wa" id="btnWa" type="button"><svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>Отправить заявку в WhatsApp</button>
@@ -290,7 +287,7 @@ footer .h{color:var(--ink);font-weight:700;margin-bottom:6px}
 
 <section id="faq"><div class="wrap">
  <h2>Вопросы</h2>
- <details class="q"><summary>Цена на сайте окончательная?</summary><p>Предварительная. Точную подтвердим после уточнения адресов и груза и зафиксируем в счёте — без доплат после рейса.</p></details>
+ <details class="q"><summary>Сколько стоит?</summary><p>Газель по городу — от 7 000 ₸ в час. Межгород, РФ, Китай и крупные машины — по договорённости: зависит от груза и расстояния. Цену согласуем до рейса и фиксируем в счёте.</p></details>
  <details class="q"><summary>Как оплатить?</summary><p>Юрлица — по счёту безналом, с НДС. Частные заказы — переводом или при подаче машины.</p></details>
  <details class="q"><summary>Вы сами возите?</summary><p>Мы экспедитор: подбираем проверенного перевозчика, договор и ответственность — на нас. Для вас один телефон и один комплект документов.</p></details>
 </div></section>
@@ -402,42 +399,18 @@ footer .h{color:var(--ink);font-weight:700;margin-bottom:6px}
 const CFG = {
   phone:     "77070000000",        // WhatsApp и звонки: только цифры, без +
   phoneShow: "+7 707 000 00 00",   // как номер показывается на сайте
-  margin:  0.15,               // ваша маржа
-  nds:     0.16,               // НДС
-  urgent:  0.20,               // надбавка за срочность
-  loaderEach: 4000,            // ОДИН грузчик за заказ (закупочная)
-  // Спецтехника — закупочные цены за подачу
-  special: {
-    "не нужна":                0,
-    "Гидроборт":            8000,
-    "Рохля / тележка":      2000,
-    "Манипулятор 3 т":     35000,
-    "Манипулятор 7 т":     50000,
-    "Автокран 16 т":       65000,
-    "Погрузчик / рампа":   25000
-  },
-  // ПО ГОРОДУ: подача (включает 2 часа) + каждый следующий час — ЗАКУПОЧНЫЕ
+  // ЦЕНЫ ДЛЯ КЛИЕНТА по городу, ₸ за час. null = «по договорённости»
   city: {
-    "Газель до 1,5 т / 9 м³":  {base: 10000, hour: 3500},
-    "Бычок до 3 т / 16 м³":    {base: 15000, hour: 5000},
-    "Фургон 5 т / 25 м³":      {base: 20000, hour: 6500},
-    "Фургон 10 т / 40 м³":     {base: 28000, hour: 8500},
-    "Фура 20 т / 86 м³":       {base: 45000, hour: 12000}
+    "Газель до 1,5 т / 9 м³":  7000,
+    "Бычок до 3 т / 16 м³":    null,
+    "Фургон 5 т / 25 м³":      null,
+    "Фургон 10 т / 40 м³":     null,
+    "Фура 20 т / 86 м³":       null
   },
-  // МЕЖГОРОД: за км + минимальная стоимость рейса (закупочные)
-  inter: {
-    "Газель до 1,5 т / 9 м³":  {km: 150, min: 60000},
-    "Бычок до 3 т / 16 м³":    {km: 190, min: 80000},
-    "Фургон 5 т / 25 м³":      {km: 230, min: 110000},
-    "Фургон 10 т / 40 м³":     {km: 280, min: 150000},
-    "Фура 20 т / 86 м³":       {km: 350, min: 220000}
-  },
-  // МЕЖДУНАРОД: за км (закупочные)
-  intl: {
-    "Фургон 5 т / 25 м³":      {km: 260, min: 400000},
-    "Фургон 10 т / 40 м³":     {km: 310, min: 550000},
-    "Фура 20 т / 86 м³":       {km: 380, min: 750000}
-  },
+  // Межгород и РФ/Китай — цена всегда по договорённости, здесь только список машин
+  inter: ["Газель до 1,5 т / 9 м³","Бычок до 3 т / 16 м³","Фургон 5 т / 25 м³","Фургон 10 т / 40 м³","Фура 20 т / 86 м³"],
+  intl:  ["Фургон 5 т / 25 м³","Фургон 10 т / 40 м³","Фура 20 т / 86 м³"],
+  special: ["не нужна","Гидроборт","Рохля / тележка","Манипулятор 3 т","Манипулятор 7 т","Автокран 16 т","Погрузчик / рампа"],
   // Расстояния от Астаны, км — ПРИБЛИЗИТЕЛЬНЫЕ
   dist: {
     "Косшы":25,"Темиртау":190,"Степногорск":200,"Караганда":215,"Щучинск":240,
@@ -489,7 +462,7 @@ document.querySelectorAll('[data-telshow]').forEach(e=>e.textContent=CFG.phoneSh
 $('btnDriver').href = WA('Хочу в базу перевозчиков JETKIZ. Моя машина: ');
 
 // ---- списки ----
-function fill(sel, obj){ sel.innerHTML=''; Object.keys(obj).forEach(k=>{
+function fill(sel, obj){ sel.innerHTML=''; (Array.isArray(obj)?obj:Object.keys(obj)).forEach(k=>{
   const o=document.createElement('option'); o.value=k; o.textContent=k.replace(' / ',', '); sel.appendChild(o); }); }
 fill($('cTruck'), CFG.city); fill($('iTruck'), CFG.inter); fill($('xTruck'), CFG.intl);
 fill($('optSpec'), CFG.special);
@@ -539,56 +512,34 @@ document.querySelectorAll('#calc .tab').forEach(t=>t.onclick=()=>{
 });
 
 function calc(){
-  let buy=0, route='—', truck='—', dist=0;
+  let route='—', truck='—', rate=null, total=null;
+  const h=+$('cHours').value;
   if(mode==='city'){
-    truck=$('cTruck').value; const t=CFG.city[truck];
-    buy = t.base + Math.max(0,+$('cHours').value-2)*t.hour;
+    truck=$('cTruck').value; rate=CFG.city[truck];
+    if(rate) total=rate*h;
     const a=$('cFrom').value.trim(), b=$('cTo').value.trim();
     route = (a||'Астана')+' → '+(b||'Астана');
   } else if(mode==='inter'){
-    truck=$('iTruck').value; const t=CFG.inter[truck];
-    const a=$('iFrom').value.trim()||'Астана', b=$('iTo').value.trim();
-    const d = CFG.dist[b] || CFG.dist[a] || 0;
-    dist=d; buy = d ? Math.max(t.min, d*t.km) : 0;
-    route = a+' → '+(b||'—');
+    truck=$('iTruck').value;
+    route = ($('iFrom').value.trim()||'Астана')+' → '+($('iTo').value.trim()||'—');
   } else {
-    truck=$('xTruck').value; const t=CFG.intl[truck];
-    const a=$('xFrom').value.trim(), b=$('xTo').value.trim()||'Астана';
-    const d = CFG.distIntl[a] || 0;
-    dist=d; buy = d ? Math.max(t.min, d*t.km) : 0;
-    route = (a||'—')+' → '+b;
+    truck=$('xTruck').value;
+    route = ($('xFrom').value.trim()||'—')+' → '+($('xTo').value.trim()||'Астана');
   }
-  const nLoad = +$('optLoad').value || 0;
-  const load  = nLoad * CFG.loaderEach;
-  const specName = $('optSpec').value;
-  const spec = CFG.special[specName] || 0;
-  const urg  = $('optUrg').checked ? (buy+load+spec)*CFG.urgent : 0;
-  const extra = load + spec + urg;
-  const withMargin = (buy + extra) * (1 + CFG.margin);
   const doc = $('optDoc').checked;
-  const nds = doc ? withMargin*CFG.nds : 0;
-  const total = withMargin + nds;
-  const ok = buy>0;
-
   $('tRoute').textContent = route;
   $('tTruck').textContent = truck.split(' / ')[0];
-  $('tDistRow').hidden = !dist;
-  $('tDist').textContent = dist ? dist.toLocaleString('ru-RU')+' км' : '';
-  $('tBase').textContent = ok ? fmt(buy*(1+CFG.margin)) : '—';
-  const xl=[]; if(nLoad) xl.push('грузчики ×'+nLoad); if(spec) xl.push(specName.toLowerCase()); if(urg) xl.push('срочно');
-  $('tExtraRow').hidden = !extra;
-  $('tExtraLbl').textContent = xl.join(', ') || 'Доп. услуги';
-  $('tExtra').textContent = fmt(extra*(1+CFG.margin));
-  $('tNdsRow').hidden = !doc;
-  $('tNds').textContent = ok ? fmt(nds) : '—';
-  $('tSum').textContent = ok ? fmt(total) : '—';
+  $('tRateRow').hidden = !rate;
+  $('tRate').textContent = rate ? 'от '+fmt(rate)+' / час' : '';
+  $('tSum').textContent = total ? 'от '+fmt(total) : 'по договорённости';
+  $('tSum').style.fontSize = total ? '' : '19px';
   $('companyRow').hidden = !doc;
-  $('tHint').textContent = ok
-    ? 'Цена предварительная. Точную подтвердим в WhatsApp за 10 минут.'
-    : (mode==='city' ? 'Выберите машину — цена появится сразу.' : 'Выберите город из подсказок — расстояние подставится само.');
-  last = {route, truck, dist, total, nds, ok, nLoad, specName, spec, doc};
+  $('tHint').textContent = total
+    ? 'За '+h+' ч работы. Точную цену подтвердим в WhatsApp за 10 минут.'
+    : 'Цена зависит от груза и расстояния. Отправьте заявку — назовём цену за 10 минут.';
+  last = {route, truck, total, doc, nLoad:+$('optLoad').value||0, specName:$('optSpec').value};
 }
-['cHours','cTruck','iTruck','xTruck','optLoad','optSpec','optDoc','optUrg']
+['cHours','cTruck','iTruck','xTruck','optLoad','optSpec','optDoc']
   .forEach(id=>{ $(id).addEventListener('change',calc); });
 calc();
 
@@ -596,17 +547,16 @@ function compose(){
   const L=['ЗАЯВКА С САЙТА JETKIZ — ГРУЗ'];
   L.push('Маршрут: '+last.route);
   L.push('Машина: '+last.truck);
-  if(last.dist) L.push('Расстояние: ~'+last.dist+' км');
   if(mode==='city') L.push('Часов работы: '+$('cHours').value);
   const v=id=>$(id).value.trim();
   if(v('cargo'))  L.push('Груз: '+v('cargo'));
   if(v('weight')) L.push('Вес: '+v('weight')+' кг');
   if(v('volume')) L.push('Объём: '+v('volume')+' м³');
   if(last.nLoad)  L.push('Грузчики: '+last.nLoad+' чел.');
-  if(last.spec)   L.push('Спецтехника: '+last.specName);
+  if(last.specName && last.specName!=='не нужна') L.push('Спецтехника: '+last.specName);
   if($('optUrg').checked) L.push('Срочно: да');
   L.push('Счёт с НДС: '+(last.doc?'да':'нет'));
-  if(last.ok) L.push('Расчёт с сайта: '+fmt(last.total)+(last.doc?' (в т.ч. НДС '+fmt(last.nds)+')':' без НДС'));
+  L.push('Ориентир с сайта: '+(last.total ? 'от '+fmt(last.total) : 'по договорённости'));
   L.push('—');
   if(v('name'))    L.push('Имя: '+v('name'));
   L.push('Телефон: '+v('phone'));
